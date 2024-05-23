@@ -1,4 +1,4 @@
-# fly.toml file generated for dumb-portal on 2023-03-22T20:31:24+09:00
+# fly.toml file generated for dumb-portal-k on 2024-05-24T01:52:44+09:00
 
 app = "dumb-portal-k"
 kill_signal = "SIGINT"
@@ -7,7 +7,7 @@ primary_region = "nrt"
 processes = []
 
 [build]
-  builder = "heroku/buildpacks:20"
+  builder = "heroku/buildpacks:22"
 
 [env]
   PORT = "8080"
