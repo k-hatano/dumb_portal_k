@@ -1,45 +1,10 @@
-# fly.toml file generated for dumb-portal-k on 2024-05-24T01:52:44+09:00
+# fly.toml file generated for dumb-portal-k on 2024-05-24T02:16:46+09:00
 
 app = "dumb-portal-k"
-kill_signal = "SIGINT"
-kill_timeout = 5
 primary_region = "nrt"
-processes = []
 
 [build]
-  builder = "heroku/buildpacks:22"
+  builder = "heroku/buildpacks:20"
 
 [env]
   PORT = "8080"
-
-[experimental]
-  auto_rollback = true
-
-[[services]]
-  http_checks = []
-  internal_port = 8080
-  processes = ["app"]
-  protocol = "tcp"
-  script_checks = []
-  [services.concurrency]
-    hard_limit = 25
-    soft_limit = 20
-    type = "connections"
-
-  [[services.ports]]
-    force_https = false
-    handlers = ["http"]
-    port = 80
-
-  [[services.ports]]
-    handlers = ["tls", "http"]
-    port = 443
-    [services.ports.tls_options]
-      alpn = ["h2", "http/1.1"]
-      versions = ["TLSv1.2"]
-
-  [[services.tcp_checks]]
-    grace_period = "1s"
-    interval = "15s"
-    restart_limit = 0
-    timeout = "2s"
